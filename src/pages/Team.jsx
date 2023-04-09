@@ -4,10 +4,10 @@ import { GridComponent, ColumnsDirective, ColumnDirective, Page, Search, Inject,
 import { employeesData, employeesGrid } from '../data/dummy'
 import { Header } from '../components'
 
-const Empoyees = () => {
+const Team = () => {
   return (
     <div className='m-2 md:m-10 p-2 md:p-10 bg-white rounded-3xl'>
-      <Header category='Page' title ='Employees'/>
+      <Header category='Page' title ='Team'/>
       <GridComponent dataSource={employeesData} allowPaging allowSorting toolbar={['Search']} width='auto' >
         <ColumnsDirective>
         {employeesGrid.map((item, index) => (
@@ -20,4 +20,4 @@ const Empoyees = () => {
   )
 }
 
-export default Empoyees
+export default Team

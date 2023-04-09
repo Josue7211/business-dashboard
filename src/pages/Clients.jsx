@@ -4,10 +4,10 @@ import { GridComponent, ColumnsDirective, ColumnDirective, Page, Selection, Inje
 import { customersData, customersGrid } from '../data/dummy'
 import { Header } from '../components'
 
-const Customers = () => {
+const Clients = () => {
   return (
     <div className='m-2 md:m-10 p-2 md:p-10 bg-white rounded-3xl'>
-      <Header category='Page' title ='Customers'/>
+      <Header category='Page' title ='Clients'/>
       <GridComponent dataSource={customersData} allowPaging allowSorting toolbar={['Delete']} editSettings={{ allowDeleting: true, allowEditing: true }} width='auto' >
         <ColumnsDirective>
         {customersGrid.map((item, index) => (
@@ -20,4 +20,4 @@ const Customers = () => {
   )
 }
 
-export default Customers
+export default Clients

@@ -484,15 +484,15 @@ export const links = [
     title: 'Pages',
     links: [
       {
-        name: 'orders',
+        name: 'Invoices',
         icon: <AiOutlineShoppingCart />,
       },
       {
-        name: 'employees',
+        name: 'Team',
         icon: <IoMdContacts />,
       },
       {
-        name: 'customers',
+        name: 'Clients',
         icon: <RiContactsLine />,
       },
     ],
@@ -618,7 +618,7 @@ export const earningData = [
     icon: <MdOutlineSupervisorAccount />,
     amount: '39,354',
     percentage: '-4%',
-    title: 'Customers',
+    title: 'Clients',
     iconColor: '#03C9D7',
     iconBg: '#E5FAFB',
     pcColor: 'red-600',
