@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { AiOutlineMenu } from 'react-icons/ai';
 import { BsChatLeft } from 'react-icons/bs';
 import { RiNotificationLine } from 'react-icons/ri';
@@ -7,6 +7,10 @@ import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 import avatar from '../data/avatar.jpg'
 import { Notification, UserProfile } from '.'
 import { useStateContext } from '../contexts/ContextProvider'
+
+  
+
+
 
 const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
   <TooltipComponent content={title} position='BottomCenter'>
@@ -22,6 +26,7 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
 
 const Navbar = () => {
   const { activeMenu, setActiveMenu, isClicked, setIsClicked, handleClick, screenSize, setScreenSize, currentColor } = useStateContext();
+  const [profilePic, setProfilePic] = useState('');
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth)
@@ -41,6 +46,14 @@ const Navbar = () => {
     }
   }, [screenSize])
 
+  useEffect(() => {
+    // Retrieve the profilePic value from local storage
+    const storedProfilePic = localStorage.getItem('profilePic');
+    if (storedProfilePic) {
+      setProfilePic(storedProfilePic);
+    }
+  }, []);
+
   return (
     <div className='flex justify-between p-2 md:mx-6 relative'>
       <NavButton title='Menu' customFunc={() => setActiveMenu((prevActiveMenu) => !prevActiveMenu)} color={currentColor} icon={<AiOutlineMenu />} />
@@ -57,7 +70,7 @@ const Navbar = () => {
           <div className='flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg'
             onClick={() => handleClick('userProfile')}
           >
-            <img className='rounded-full w-8 h-8' src={avatar} />
+            <img className='rounded-full w-8 h-8' src={profilePic} />
             <p>
               <span className='text-gray-400 text-14'>Hi, </span> {' '}
               <span className='text-gray-400 font-bold ml-1 text-14'>{localStorage.getItem("name")}</span>
