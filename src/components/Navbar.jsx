@@ -3,7 +3,7 @@ import { AiOutlineMenu } from 'react-icons/ai';
 import { BsChatLeft } from 'react-icons/bs';
 import { RiNotificationLine } from 'react-icons/ri';
 import { MdKeyboardArrowDown  } from 'react-icons/md';
-import { Tooltip, TooltipComponent } from '@syncfusion/ej2-react-popups';
+import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 import avatar from '../data/avatar.jpg'
 import { Notification, UserProfile } from '.'
 import { useStateContext } from '../contexts/ContextProvider'
@@ -53,20 +53,18 @@ const Navbar = () => {
           color={currentColor}
           icon={<RiNotificationLine />}
         />
-        <TooltipComponent content='Profile' position='BottomCenter'>
+        
           <div className='flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg'
             onClick={() => handleClick('userProfile')}
           >
             <img className='rounded-full w-8 h-8' src={avatar} />
             <p>
               <span className='text-gray-400 text-14'>Hi, </span> {' '}
-              <span className='text-gray-400 font-bold ml-1 text-14'>Michael</span>
+              <span className='text-gray-400 font-bold ml-1 text-14'>{localStorage.getItem("name")}</span>
             </p>
             <MdKeyboardArrowDown className='text-gray-400 text-14'/>
           </div>
-        </TooltipComponent>
 
-        {isClicked.chat && <Chat />}
         {isClicked.notification && <Notification />}
         {isClicked.userProfile && <UserProfile />}
       </div>

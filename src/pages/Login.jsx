@@ -19,23 +19,27 @@ const Login = () => {
         console.log(error);
       });
   };
+  
 
 
   // Google authentication provider
+  const defaultProfilePic = require('../data/avatar.jpg');
   const provider = new GoogleAuthProvider();
 
   // Sign in with google function
   const signInWithGoogle = (e) => {
     signInWithPopup(auth, provider)
       .then((result) => {
-        // console.log(result);
-        // console.log(result.user);
+        console.log(result);
+        console.log(result.user);
 
 
         // Get the values that we want from the response
         const name = result._tokenResponse.firstName;
         const email = result.user.email;
-        const profilePic = result.user.photoURL;
+        const profilePic = result.user.photoURL || defaultProfilePic;
+
+        console.log(profilePic);
 
         // Store values in local storage
         localStorage.setItem("name", name);
@@ -43,7 +47,7 @@ const Login = () => {
         localStorage.setItem("profilePic", profilePic);
 
         // Send the user to the dashboard
-        navigate("/");
+        navigate("/ecommerce");
       })
       .catch((error) => {
         console.log(error);
