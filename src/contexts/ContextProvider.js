@@ -1,15 +1,13 @@
 import React, { createContext, useContext, useState, useEffect } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from '../Firebase';
-import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { collection, getDocs, onSnapshot} from "firebase/firestore";
 import { signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword  } from "firebase/auth";
 
 const StateContext = createContext()
 
 const initialState = {
-    chat: false,
-    cart: false,
     userProfile: false,
     notification: false,
 }
@@ -33,25 +31,24 @@ export const ContextProvider = ({ children }) => {
       // Google authentication provider
     const defaultProfilePic = require('../data/avatar.jpg');
     const provider = new GoogleAuthProvider();
-    const navigate = useNavigate();
 
     const signIn = (e) => {
       e.preventDefault();
       signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-          console.log(userCredential);
-          navigate("/ecommerce");
+          console.log(userCredential)
+          Navigate("/Dashboard")
         })
         .catch((error) => {
-          console.log(error);
+          console.log(error)
         });
     };
 
     const signInWithGoogle = (e) => {
       signInWithPopup(auth, provider)
         .then((result) => {
-          console.log(result);
-          console.log(result.user);
+          console.log(result)
+          console.log(result.user)
   
   
           // Get the values that we want from the response
@@ -59,18 +56,18 @@ export const ContextProvider = ({ children }) => {
           const email = result.user.email;
           const profilePic = result.user.photoURL || defaultProfilePic;
   
-          console.log(profilePic);
+          console.log(profilePic)
   
           // Store values in local storage
-          localStorage.setItem("name", name);
-          localStorage.setItem("email", email);
-          localStorage.setItem("profilePic", profilePic);
+          localStorage.setItem("name", name)
+          localStorage.setItem("email", email)
+          localStorage.setItem("profilePic", profilePic)
   
           // Send the user to the dashboard
-          navigate("/ecommerce");
+          Navigate("/Dashboard")
         })
         .catch((error) => {
-          console.log(error);
+          console.log(error)
         });
     };
     
