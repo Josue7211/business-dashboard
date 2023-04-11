@@ -5,7 +5,7 @@ import { Stacked, Pie, Button, SparkLine } from '../components'
 import { earningData, SparklineAreaData } from '../data/dummy'
 import { useStateContext } from '../contexts/ContextProvider'
 
-const Ecommerce = () => {
+const Dashboard = () => {
   const { currentColor } = useStateContext()
 
   return (
@@ -116,4 +116,4 @@ const Ecommerce = () => {
   )
 }
 
-export default Ecommerce
+export default Dashboard

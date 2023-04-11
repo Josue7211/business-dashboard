@@ -392,14 +392,17 @@ export const LinePrimaryYAxis = {
 };
 
 export const customersGrid = [
-  { type: 'checkbox', width: '50' },
-
   { 
     field: 'firstName',
-    headerText: 'Name',
-    width: '150',
+    headerText: 'First Name',
+    width: '100',
     // template: customerGridImage,
     textAlign: 'Center' },
+    { 
+      field: 'lastName',
+      headerText: 'Last Name',
+      width: '100',
+      textAlign: 'Left' },
   { field: 'phone',
     headerText: 'Phone Number',
     width: '150',
@@ -422,11 +425,11 @@ export const customersGrid = [
 
   { field: 'zipCode',
     headerText: 'Zip Code',
-    width: '150',
+    width: '100',
     textAlign: 'Center' },
 
-  { field: 'CustomerID',
-    headerText: 'Customer ID',
+  { field: 'id',
+    headerText: 'Client ID',
     width: '120',
     textAlign: 'Center',
     isPrimaryKey: true,
@@ -475,7 +478,7 @@ export const links = [
     title: 'Dashboard',
     links: [
       {
-        name: 'ecommerce',
+        name: 'Dashboard',
         icon: <FiShoppingBag />,
       },
     ],
@@ -873,21 +876,20 @@ export const userProfileData = [
 
 export const ordersGrid = [
   {
-    field: 'name',
-    headerText: 'Name',
+    field: 'id',
+    headerText: 'Invoice ID',
+    width: '80',
     textAlign: 'Center',
-    width: '120',
   },
   {
-    field: 'id',
-    headerText: 'ID',
-    width: '150',
-    editType: 'dropdownedit',
-    textAlign: 'Center',
+    field: 'name',
+    headerText: 'Name',
+    textAlign: 'Left',
+    width: '120',
   },
   { field: 'phone',
     headerText: 'Phone Number',
-    width: '150',
+    width: '120',
     textAlign: 'Center',
   },
   {
@@ -896,7 +898,13 @@ export const ordersGrid = [
     format: 'C2',
     textAlign: 'Center',
     editType: 'numericedit',
-    width: '150',
+    width: '120',
+  },
+  {
+    field: 'amount',
+    headerText: 'Amount',
+    width: '120',
+    textAlign: 'Center',
   },
   {
     headerText: 'Status',
@@ -904,19 +912,6 @@ export const ordersGrid = [
     field: 'OrderItems',
     textAlign: 'Center',
     width: '120',
-  },
-  {
-    field: 'OrderID',
-    headerText: 'Order ID',
-    width: '120',
-    textAlign: 'Center',
-  },
-
-  {
-    field: 'Location',
-    headerText: 'Location',
-    width: '150',
-    textAlign: 'Center',
   },
 ];
 

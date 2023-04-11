@@ -4,7 +4,7 @@ import { useStateContext } from './contexts/ContextProvider'
 import { FiSettings } from 'react-icons/fi'
 import { TooltipComponent } from '@syncfusion/ej2-react-popups'
 import { Navbar, Footer, Sidebar, ThemeSettings } from './components'
-import { Ecommerce, Invoices, Calendar, Team, Stacked, Pyramid, Clients, Kanban, Area, Bar, Pie, Financial, ColorPicker, ColorMapping, Editor, Line, Login  } from './pages'
+import { Dashboard, Invoices, Calendar, Team, Stacked, Pyramid, Clients, Kanban, Area, Bar, Pie, Financial, ColorPicker, ColorMapping, Editor, Line, Login  } from './pages'
 import './App.css'
 
 const App = () => {
@@ -48,8 +48,8 @@ const App = () => {
                 {themeSettings && <ThemeSettings />}
                 <Routes>
                   {/* Dashboard */}
-                  <Route path='/' element={<Ecommerce />} />
-                  <Route path='/ecommerce' element={<Ecommerce />} />
+                  <Route path='/' element={<Dashboard />} />
+                  <Route path='/dashboard' element={<Dashboard />} />
 
                   {/* Pages */}
                   <Route path='/invoices' element={<Invoices />} />
@@ -79,7 +79,6 @@ const App = () => {
         ) : (
           <Routes>
             <Route path="/login" element={<Login />} />
-            <Route path='/' element={<Navigate to='/login' />} />
           </Routes>
         )}
       </BrowserRouter>
