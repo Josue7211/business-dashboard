@@ -1,60 +1,8 @@
 import React from "react";
 import { useStateContext } from '../contexts/ContextProvider'
-import { auth } from "../Firebase";
-import { useNavigate } from "react-router-dom";
-import { signInWithPopup, GoogleAuthProvider, getAuth, signInWithEmailAndPassword  } from "firebase/auth";
 
 const Login = () => {
-  const navigate = useNavigate();
-  const { email, setEmail, password, setPassword, user, loading, error } = useStateContext();
-
-  const signIn = (e) => {
-    e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        console.log(userCredential);
-        navigate("/ecommerce");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-  
-
-
-  // Google authentication provider
-  const defaultProfilePic = require('../data/avatar.jpg');
-  const provider = new GoogleAuthProvider();
-
-  // Sign in with google function
-  const signInWithGoogle = (e) => {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        console.log(result);
-        console.log(result.user);
-
-
-        // Get the values that we want from the response
-        const name = result._tokenResponse.firstName;
-        const email = result.user.email;
-        const profilePic = result.user.photoURL || defaultProfilePic;
-
-        console.log(profilePic);
-
-        // Store values in local storage
-        localStorage.setItem("name", name);
-        localStorage.setItem("email", email);
-        localStorage.setItem("profilePic", profilePic);
-
-        // Send the user to the dashboard
-        navigate("/ecommerce");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-
+  const { email, setEmail, password, setPassword, signIn, signInWithGoogle } = useStateContext();
 
   return (
     <div className="flex w-full h-screen bg-light-gray">

@@ -1,7 +1,9 @@
 import React, { createContext, useContext, useState, useEffect } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from '../Firebase';
+import { useNavigate } from "react-router-dom";
 import { collection, getDocs, onSnapshot} from "firebase/firestore";
+import { signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword  } from "firebase/auth";
 
 const StateContext = createContext()
 
@@ -27,6 +29,50 @@ export const ContextProvider = ({ children }) => {
 
     const invoicesCollectionRef = collection(db, "invoices");
     const clientsCollectionRef = collection(db, "clients");
+
+      // Google authentication provider
+    const defaultProfilePic = require('../data/avatar.jpg');
+    const provider = new GoogleAuthProvider();
+    const navigate = useNavigate();
+
+    const signIn = (e) => {
+      e.preventDefault();
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          console.log(userCredential);
+          navigate("/ecommerce");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+
+    const signInWithGoogle = (e) => {
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          console.log(result);
+          console.log(result.user);
+  
+  
+          // Get the values that we want from the response
+          const name = result._tokenResponse.firstName;
+          const email = result.user.email;
+          const profilePic = result.user.photoURL || defaultProfilePic;
+  
+          console.log(profilePic);
+  
+          // Store values in local storage
+          localStorage.setItem("name", name);
+          localStorage.setItem("email", email);
+          localStorage.setItem("profilePic", profilePic);
+  
+          // Send the user to the dashboard
+          navigate("/ecommerce");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
     
     const setMode = (e) =>  {
         setCurrentMode(e.target.value)
@@ -52,6 +98,7 @@ export const ContextProvider = ({ children }) => {
           };
         });
       };
+
 
     const getInvoices = async () => {
       try {
@@ -83,6 +130,8 @@ export const ContextProvider = ({ children }) => {
     return unsubscribe; 
   }, []);
 
+
+
     return (
         <StateContext.Provider 
             value={{ 
@@ -102,6 +151,8 @@ export const ContextProvider = ({ children }) => {
                 user,
                 loading,
                 error,
+                signIn,
+                signInWithGoogle,
                 email,
                 setEmail,
                 password,
