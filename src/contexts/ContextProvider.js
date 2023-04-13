@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from '../Firebase';
 import { Navigate } from "react-router-dom";
-import { collection, getDocs, onSnapshot} from "firebase/firestore";
+import { collection, onSnapshot} from "firebase/firestore";
 import { signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword  } from "firebase/auth";
 
 const StateContext = createContext()
@@ -23,14 +23,15 @@ export const ContextProvider = ({ children }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('')
     const [invoices, setInvoices] = useState([])
+    const [team, setTeam] = useState([])
     const [clients, setClients] = useState([])
     const [profilePic, setProfilePic] = useState('')
 
     const invoicesCollectionRef = collection(db, "invoices");
     const clientsCollectionRef = collection(db, "clients");
+    const teamCollectionRef = collection(db, "team");
 
       // Google authentication provider
-    const defaultProfilePic = require('../data/avatar.jpg');
     const provider = new GoogleAuthProvider();
 
     const signIn = (e) => {
@@ -71,41 +72,33 @@ export const ContextProvider = ({ children }) => {
     };
     
     const setMode = (e) =>  {
-        setCurrentMode(e.target.value)
+      setCurrentMode(e.target.value)
 
-        localStorage.setItem('themeMode', e.target.value)
+      localStorage.setItem('themeMode', e.target.value)
         
-        setThemeSettings(false)
+      setThemeSettings(false)
     }
 
     const setColor = (color) =>  {
-        setCurrentColor(color)
+      setCurrentColor(color)
 
-        localStorage.setItem('colorMode', color)
+      localStorage.setItem('colorMode', color)
 
-        setThemeSettings(false)
+      setThemeSettings(false)
     }
 
     const handleClick = (clicked) => {
-        setIsClicked(prevState => {
-          return {
-            ...initialState,
-            [clicked]: !prevState[clicked]
-          };
-        });
-      };
+      setIsClicked(prevState => {
+        return {
+          ...initialState,
+          [clicked]: !prevState[clicked]
+        };
+      });
+    };
 
+    const handleLogout = () => {
 
-    const getInvoices = async () => {
-      try {
-        const data = await getDocs(invoicesCollectionRef);
-          setInvoices(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
-          console.log(data);
-        } catch (error) {
-          console.error(error);
-        } finally {
-        }
-      };
+    };
 
     useEffect(() => {
       const unsubscribe = onSnapshot(invoicesCollectionRef, (snapshot) => {
@@ -117,11 +110,16 @@ export const ContextProvider = ({ children }) => {
       
     useEffect(() => {
       const unsubscribe = onSnapshot(clientsCollectionRef, (snapshot) => {
-        const updatedClients = snapshot.docs.map((doc) => ({
-          ...doc.data(),
-          id: doc.id,
-        }));
+        const updatedClients = snapshot.docs.map((doc) => ({...doc.data(),id: doc.id,}));
         setClients(updatedClients);
+      });
+    return unsubscribe; 
+  }, []);
+  
+    useEffect(() => {
+      const unsubscribe = onSnapshot(teamCollectionRef, (snapshot) => {
+        const updatedTeam = snapshot.docs.map((doc) => ({...doc.data(),id: doc.id,}));
+        setTeam(updatedTeam);
       });
     return unsubscribe; 
   }, []);
@@ -161,6 +159,7 @@ export const ContextProvider = ({ children }) => {
                 setPassword,
                 invoices,
                 clients,
+                team,
                 profilePic,
                 
             }}
