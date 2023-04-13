@@ -1,8 +1,8 @@
 import React from 'react';
 import { AiOutlineCalendar, AiOutlineShoppingCart, AiOutlineAreaChart, AiOutlineBarChart, AiOutlineStock } from 'react-icons/ai';
 import { FiShoppingBag, FiEdit, FiPieChart, FiBarChart, FiCreditCard, FiStar, FiShoppingCart } from 'react-icons/fi';
-import { BsKanban, BsBarChart, BsBoxSeam, BsCurrencyDollar, BsShield, BsChatLeft } from 'react-icons/bs';
-import { BiColorFill } from 'react-icons/bi';
+import { BsKanban, BsBarChart, BsBoxSeam, BsCurrencyDollar, BsShield, BsChatLeft, BsListTask} from 'react-icons/bs';
+import { BiColorFill, BiUser } from 'react-icons/bi';
 import { IoMdContacts } from 'react-icons/io';
 import { RiContactsLine, RiStockLine } from 'react-icons/ri';
 import { MdOutlineSupervisorAccount } from 'react-icons/md';
@@ -10,18 +10,7 @@ import { HiOutlineRefresh } from 'react-icons/hi';
 import { TiTick } from 'react-icons/ti';
 import { GiLouvrePyramid } from 'react-icons/gi';
 import { GrLocation } from 'react-icons/gr';
-import avatar from './avatar.jpg';
-import avatar2 from './avatar2.jpg';
-import avatar3 from './avatar3.png';
-import avatar4 from './avatar4.jpg';
-import product1 from './product1.jpg';
-import product2 from './product2.jpg';
-import product3 from './product3.jpg';
-import product4 from './product4.jpg';
-import product5 from './product5.jpg';
-import product6 from './product6.jpg';
-import product7 from './product7.jpg';
-import product8 from './product8.jpg';
+import avatar from './default.png';
 
 export const gridOrderImage = (props) => (
   <div>
@@ -65,17 +54,16 @@ const gridEmployeeProfile = (props) => (
   <div className="flex items-center gap-2">
     <img
       className="rounded-full w-10 h-10"
-      src={props.EmployeeImage}
-      alt="employee"
+      src={avatar}
     />
-    <p>{props.Name}</p>
+    <p>{props.name}</p>
   </div>
 );
 
 const gridEmployeeCountry = (props) => (
   <div className="flex items-center justify-center gap-2">
     <GrLocation />
-    <span>{props.Country}</span>
+    <span>{props.country}</span>
   </div>
 );
 export const EditorData = () => (
@@ -441,9 +429,9 @@ export const employeesGrid = [
   { headerText: 'Employee',
     width: '150',
     template: gridEmployeeProfile,
-    textAlign: 'Center'
+    textAlign: 'Center',
   },
-  { field: 'Name',
+  { field: 'name',
     headerText: '',
     width: '0',
     textAlign: 'Center',
@@ -565,48 +553,24 @@ export const links = [
   },
 ];
 
-export const cartData = [
-  {
-    image:
-      product5,
-    name: 'butterscotch ice-cream',
-    category: 'Milk product',
-    price: '$250',
-  },
-  {
-    image:
-      product6,
-    name: 'Supreme fresh tomato',
-    category: 'Vegetable Item',
-    price: '$450',
-  },
-  {
-    image:
-      product7,
-    name: 'Red color candy',
-    category: 'Food Item',
-    price: '$190',
-  },
-];
-
 export const chatData = [
   {
     image:
-      avatar2,
+      avatar,
     message: 'Roman Joined the Team!',
     desc: 'Congratulate him',
     time: '9:08 AM',
   },
   {
     image:
-      avatar3,
+      avatar,
     message: 'New message received',
     desc: 'Salma sent you new message',
     time: '11:56 AM',
   },
   {
     image:
-      avatar4,
+      avatar,
     message: 'New Payment received',
     desc: 'Check your earnings',
     time: '4:39 AM',
@@ -737,94 +701,6 @@ export const weeklyStats = [
   },
 ];
 
-export const productsPerformance = [
-  {
-    image:
-      product5,
-    title: 'Is it good butterscotch ice-cream?',
-    desc: 'Ice-Cream, Milk, Powder',
-    rating: 'Good',
-    itemSold: '65%',
-    earningAmount: '$546,000',
-  },
-  {
-    image:
-      product6,
-    title: 'Supreme fresh tomato available',
-    desc: 'Market, Mall',
-    rating: 'Excellent',
-    itemSold: '98%',
-    earningAmount: '$780,000',
-  },
-  {
-    image:
-      product7,
-    title: 'Red color candy from Gucci',
-    desc: 'Chocolate, Yummy',
-    rating: 'Average',
-    itemSold: '46%',
-    earningAmount: '$457,000',
-  },
-  {
-    image:
-      product4,
-    title: 'Stylish night lamp for night',
-    desc: 'Electric, Wire, Current',
-    rating: 'Poor',
-    itemSold: '23%',
-    earningAmount: '$123,000',
-  },
-];
-
-export const medicalproBranding = {
-  data: [
-    {
-      title: 'Due Date',
-      desc: 'Oct 23, 2021',
-    },
-    {
-      title: 'Budget',
-      desc: '$98,500',
-    },
-    {
-      title: 'Expense',
-      desc: '$63,000',
-    },
-  ],
-  teams: [
-    {
-      name: 'Bootstrap',
-      color: 'orange',
-    },
-    {
-      name: 'Angular',
-      color: '#FB9678',
-    },
-  ],
-  leaders: [
-    {
-      image:
-        avatar2,
-    },
-    {
-      image:
-        avatar3,
-    },
-    {
-      image:
-        avatar2,
-    },
-    {
-      image:
-        avatar4,
-    },
-    {
-      image:
-        avatar,
-    },
-  ],
-};
-
 export const themeColors = [
   {
     name: 'blue-theme',
@@ -854,25 +730,18 @@ export const themeColors = [
 
 export const userProfileData = [
   {
-    icon: <BsCurrencyDollar />,
+    icon: <BiUser />,
     title: 'My Profile',
     desc: 'Account Settings',
     iconColor: '#03C9D7',
     iconBg: '#E5FAFB',
   },
   {
-    icon: <BsShield />,
-    title: 'My Inbox',
-    desc: 'Messages & Emails',
-    iconColor: 'rgb(0, 194, 146)',
-    iconBg: 'rgb(235, 250, 242)',
-  },
-  {
-    icon: <FiCreditCard />,
+    icon: <BsListTask />,
     title: 'My Tasks',
     desc: 'To-do and Daily Tasks',
-    iconColor: 'rgb(255, 244, 229)',
-    iconBg: 'rgb(254, 201, 15)',
+    iconColor: 'rgb(0, 194, 146)',
+    iconBg: 'rgb(235, 250, 242)',
   },
 ];
 
