@@ -54,7 +54,7 @@ export const ContextProvider = ({ children }) => {
           // Get the values that we want from the response
           const name = result._tokenResponse.firstName;
           const email = result.user.email;
-          const profilePic = result.user.photoURL || defaultProfilePic;
+          const profilePic = result.user.photoURL;
   
           console.log(profilePic)
   
