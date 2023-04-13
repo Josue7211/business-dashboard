@@ -1,16 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { AiOutlineMenu } from 'react-icons/ai';
-import { BsChatLeft } from 'react-icons/bs';
 import { RiNotificationLine } from 'react-icons/ri';
 import { MdKeyboardArrowDown  } from 'react-icons/md';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
-import avatar from '../data/avatar.jpg'
 import { Notification, UserProfile } from '.'
 import { useStateContext } from '../contexts/ContextProvider'
-
-  
-
-
 
 const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
   <TooltipComponent content={title} position='BottomCenter'>
@@ -25,8 +19,7 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
 )
 
 const Navbar = () => {
-  const { activeMenu, setActiveMenu, isClicked, setIsClicked, handleClick, screenSize, setScreenSize, currentColor } = useStateContext();
-  const [profilePic, setProfilePic] = useState('');
+  const { setActiveMenu, isClicked, handleClick, screenSize, setScreenSize, currentColor, profilePic } = useStateContext();
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth)
@@ -45,14 +38,6 @@ const Navbar = () => {
       setActiveMenu(true)
     }
   }, [screenSize])
-
-  useEffect(() => {
-    // Retrieve the profilePic value from local storage
-    const storedProfilePic = localStorage.getItem('profilePic');
-    if (storedProfilePic) {
-      setProfilePic(storedProfilePic);
-    }
-  }, []);
 
   return (
     <div className='flex justify-between p-2 md:mx-6 relative'>

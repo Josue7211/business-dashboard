@@ -1,22 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { MdOutlineCancel } from 'react-icons/md';
-
 import { Button } from '.';
 import { userProfileData } from '../data/dummy';
 import { useStateContext } from '../contexts/ContextProvider';
 
 
 const UserProfile = () => {
-  const { currentColor } = useStateContext();
-  const [profilePic, setProfilePic] = useState('');
-
-  useEffect(() => {
-    // Retrieve the profilePic value from local storage
-    const storedProfilePic = localStorage.getItem('profilePic');
-    if (storedProfilePic) {
-      setProfilePic(storedProfilePic);
-    }
-  }, []);
+  const { currentColor, profilePic } = useStateContext();
 
   return (
     <div className="nav-item absolute right-1 top-16 bg-white dark:bg-[#42464D] p-8 rounded-lg w-96">
@@ -34,7 +24,6 @@ const UserProfile = () => {
         <img
           className="rounded-full h-24 w-24"
           src={profilePic}
-          alt="user-profile"
         />
         <div>
           <p className="font-semibold text-xl dark:text-gray-200">{localStorage.getItem("name")}</p>
@@ -64,6 +53,7 @@ const UserProfile = () => {
         <Button
           color="white"
           bgColor={currentColor}
+          onClick={() => handleLogout(user)}
           text="Logout"
           borderRadius="10px"
           width="full"

@@ -24,6 +24,7 @@ export const ContextProvider = ({ children }) => {
     const [password, setPassword] = useState('')
     const [invoices, setInvoices] = useState([])
     const [clients, setClients] = useState([])
+    const [profilePic, setProfilePic] = useState('')
 
     const invoicesCollectionRef = collection(db, "invoices");
     const clientsCollectionRef = collection(db, "clients");
@@ -55,8 +56,6 @@ export const ContextProvider = ({ children }) => {
           const name = result._tokenResponse.firstName;
           const email = result.user.email;
           const profilePic = result.user.photoURL;
-  
-          console.log(profilePic)
   
           // Store values in local storage
           localStorage.setItem("name", name)
@@ -127,7 +126,13 @@ export const ContextProvider = ({ children }) => {
     return unsubscribe; 
   }, []);
 
-
+  useEffect(() => {
+    // Retrieve the profilePic value from local storage
+    const storedProfilePic = localStorage.getItem('profilePic');
+    if (storedProfilePic) {
+      setProfilePic(storedProfilePic);
+    }
+  }, []);
 
     return (
         <StateContext.Provider 
@@ -156,6 +161,7 @@ export const ContextProvider = ({ children }) => {
                 setPassword,
                 invoices,
                 clients,
+                profilePic,
                 
             }}
         >
