@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react'
 import { auth, db } from '../Firebase';
 import { redirect } from "react-router-dom";
 import { collection, onSnapshot} from "firebase/firestore";
-import { signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
 
 const FirebaseContext = createContext()
 

@@ -5,6 +5,7 @@ import { MdKeyboardArrowDown  } from 'react-icons/md';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 import { Notification, UserProfile } from '.'
 import { useStateContext } from '../contexts/ContextProvider'
+import { useFirebaseContext } from '../contexts/FirebaseContextProvider';
 
 const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
   <TooltipComponent content={title} position='BottomCenter'>
@@ -19,7 +20,8 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
 )
 
 const Navbar = () => {
-  const { setActiveMenu, isClicked, handleClick, currentColor, profilePic } = useStateContext();
+  const { setActiveMenu, isClicked, handleClick, currentColor } = useStateContext();
+  const { profilePic } = useFirebaseContext();
 
   return (
     <div className='flex justify-between p-2 md:mx-6 relative'>

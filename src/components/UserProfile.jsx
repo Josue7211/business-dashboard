@@ -53,18 +53,18 @@ const UserProfile = () => {
         ))}
       </div>
       <div className="mt-5">
-        <Button
-          color="white"
-          bgColor={currentColor}
+        <button
+          className='text-white font-semibold py-2 px-4 rounded-lg w-full'
+          style={{backgroundColor: currentColor}}
           onClick={logOut}
-          text="Logout"
-          borderRadius="10px"
-          width="full"
-        />
+        >
+          Logout
+        </button>
       </div>
     </div>
 
   );
 };
+
 
 export default UserProfile;
