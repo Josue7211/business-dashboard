@@ -5,7 +5,6 @@ import { MdKeyboardArrowDown  } from 'react-icons/md';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 import { Notification, UserProfile } from '.'
 import { useStateContext } from '../contexts/ContextProvider'
-import { useDataContext } from '../contexts/DataContextProvider'
 
 const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
   <TooltipComponent content={title} position='BottomCenter'>
@@ -20,8 +19,7 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
 )
 
 const Navbar = () => {
-  const { setActiveMenu, isClicked, handleClick, screenSize, setScreenSize, currentColor } = useStateContext();
-  const { profilePic } = useDataContext();
+  const { setActiveMenu, isClicked, handleClick, screenSize, setScreenSize, currentColor, profilePic } = useStateContext();
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth)
