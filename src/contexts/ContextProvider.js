@@ -96,9 +96,11 @@ export const ContextProvider = ({ children }) => {
       });
     };
 
-    const handleLogout = () => {
-
-    };
+    const logOut = () => {
+      signOut(auth).then(() => {
+          console.log('Signed Out')
+      }).catch(error => console.log(error))
+    } 
 
     useEffect(() => {
       const unsubscribe = onSnapshot(invoicesCollectionRef, (snapshot) => {
@@ -113,24 +115,42 @@ export const ContextProvider = ({ children }) => {
         const updatedClients = snapshot.docs.map((doc) => ({...doc.data(),id: doc.id,}));
         setClients(updatedClients);
       });
-    return unsubscribe; 
-  }, []);
+      return unsubscribe; 
+    }, []);
   
     useEffect(() => {
       const unsubscribe = onSnapshot(teamCollectionRef, (snapshot) => {
         const updatedTeam = snapshot.docs.map((doc) => ({...doc.data(),id: doc.id,}));
         setTeam(updatedTeam);
       });
-    return unsubscribe; 
-  }, []);
+      return unsubscribe; 
+    }, []);
+
+    useEffect(() => {
+      // Retrieve the profilePic value from local storage
+      const storedProfilePic = localStorage.getItem('profilePic');
+      if (storedProfilePic) {
+        setProfilePic(storedProfilePic);
+      }
+    }, []);
+
+      useEffect(() => {
+    const handleResize = () => setScreenSize(window.innerWidth)
+
+    window.addEventListener('resize', handleResize)
+
+    handleResize()
+
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   useEffect(() => {
-    // Retrieve the profilePic value from local storage
-    const storedProfilePic = localStorage.getItem('profilePic');
-    if (storedProfilePic) {
-      setProfilePic(storedProfilePic);
+    if(screenSize <= 900) {
+      setActiveMenu(false)
+    } else {
+      setActiveMenu(true)
     }
-  }, []);
+  }, [screenSize])
 
     return (
         <StateContext.Provider 
@@ -153,6 +173,7 @@ export const ContextProvider = ({ children }) => {
                 error,
                 signIn,
                 signInWithGoogle,
+                logOut,
                 email,
                 setEmail,
                 password,
