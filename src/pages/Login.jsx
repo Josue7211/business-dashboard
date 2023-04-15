@@ -1,13 +1,13 @@
 import React from "react";
-import { useStateContext } from '../contexts/ContextProvider'
+import { useAuthContext } from "../contexts/AuthContextProvider";
 
 const Login = () => {
-  const { email, setEmail, password, setPassword, signIn, signInWithGoogle } = useStateContext();
+  const { email, setEmail, password, setPassword, signIn, signInWithGoogle } = useAuthContext();
 
   return (
     <div className="flex w-full h-screen bg-light-gray">
       <div className="w-full flex items-center justify-center">
-        <div className=" w-11/12 max-w-[700px] px-10 py-20 rounded-3xl bg-white border-2 border-gray-100">
+        <div className=" w-11/12 max-w-[700px] px-10 py-20 rounded-3xl bg-white border-2">
           <h1 className="text-5xl font-semibold text-zinc-900">Welcome Back</h1>
           <p className="font-medium text-lg text-gray-500 mt-4">
             Welcome back! Please enter you details.
