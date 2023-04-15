@@ -2,14 +2,16 @@ import React from 'react'
 import PrivateRoutes from './contexts/PrivateRoutes';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useStateContext } from './contexts/ContextProvider'
+import { useFirebaseContext } from './contexts/FirebaseContextProvider';
 import { FiSettings } from 'react-icons/fi'
 import { TooltipComponent } from '@syncfusion/ej2-react-popups'
-import { Navbar, Footer, Sidebar, ThemeSettings } from './components'
+import { Navbar, Sidebar, ThemeSettings } from './components'
 import { Dashboard, Invoices, Calendar, Team, Stacked, Pyramid, Clients, Kanban, Area, Bar, Pie, Financial, ColorPicker, ColorMapping, Editor, Line, Login  } from './pages'
 import './App.css'
 
 const App = () => {
-  const { activeMenu, themeSettings, setThemeSettings, currentColor, currentMode, user } = useStateContext();
+  const { activeMenu, themeSettings, setThemeSettings, currentColor, currentMode } = useStateContext();
+  const { authUser } = useFirebaseContext();
   
   return (
     <div className={currentMode === 'Dark' ? 'dark' : ''}>
@@ -30,18 +32,18 @@ const App = () => {
 
             {activeMenu ? (
               <div className='w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white'>
-                {user && <Sidebar />}
+                {authUser && <Sidebar />}
               </div>
             ) : (
               <div className='w-0 dark:bg-secondary-dark-bg'>
-                {user && <Sidebar />}
+                {authUser && <Sidebar />}
               </div>
             )}
             <div className={
-              `dark:bg-main-dark-bg bg-main-bg min-h-screen w-full ${activeMenu && user ? 'md:ml-72' : 'flex-2 '}`
+              `dark:bg-main-dark-bg bg-main-bg min-h-screen w-full ${activeMenu && authUser ? 'md:ml-72' : 'flex-2 '}`
             }>
               <div className='fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full'>
-              {user && <Navbar />}
+                {authUser && <Navbar />}
               </div>
 
             <div>

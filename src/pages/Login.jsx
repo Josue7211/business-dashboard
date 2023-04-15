@@ -1,8 +1,8 @@
 import React from "react";
-import { useStateContext } from '../contexts/ContextProvider'
+import { useFirebaseContext } from "../contexts/FirebaseContextProvider";
 
 const Login = () => {
-  const { email, setEmail, password, setPassword, signIn, signInWithGoogle } = useStateContext();
+  const { email, setEmail, password, setPassword, signIn, signInWithGoogle } = useFirebaseContext();
 
   return (
     <div className="flex w-full h-screen bg-light-gray">

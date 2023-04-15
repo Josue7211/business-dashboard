@@ -3,10 +3,12 @@ import { MdOutlineCancel } from 'react-icons/md';
 import { Button } from '.';
 import { userProfileData } from '../data/dummy';
 import { useStateContext } from '../contexts/ContextProvider';
+import { useFirebaseContext } from '../contexts/FirebaseContextProvider';
 
 
 const UserProfile = () => {
-  const { currentColor, profilePic } = useStateContext();
+  const { currentColor } = useStateContext();
+  const { logOut, profilePic } = useFirebaseContext();
 
   return (
     <div className="nav-item absolute right-1 top-16 bg-white dark:bg-[#42464D] p-8 rounded-lg w-96">
@@ -54,7 +56,7 @@ const UserProfile = () => {
         <Button
           color="white"
           bgColor={currentColor}
-          onClick={() => handleLogout(user)}
+          onClick={logOut}
           text="Logout"
           borderRadius="10px"
           width="full"

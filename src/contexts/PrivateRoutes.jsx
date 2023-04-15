@@ -1,12 +1,12 @@
 import React from 'react'
 import { Outlet, Navigate } from 'react-router-dom'
-import { useStateContext } from './ContextProvider'
+import { useFirebaseContext } from './FirebaseContextProvider'
 
 const PrivateRoutes = () => {
-    const { user } = useStateContext()
+    const { authUser } = useFirebaseContext()
 
   return (
-    user ? <Outlet/> : <Navigate to="/login" />
+    authUser ? <Outlet/> : <Navigate to="/login" />
   )
 }
 
