@@ -14,12 +14,14 @@ export const FirebaseContextProvider = ({ children }) => {
     const [team, setTeam] = useState([])
     const [clients, setClients] = useState([])
     const [profilePic, setProfilePic] = useState('')
+    const [isLoading, setIsLoading] = useState(true);
+
 
     const invoicesCollectionRef = collection(db, "invoices");
     const clientsCollectionRef = collection(db, "clients");
     const teamCollectionRef = collection(db, "team");
 
-      // Google authentication provider
+    // Google authentication provider
     const provider = new GoogleAuthProvider();
 
     const signIn = (e) => {
@@ -40,7 +42,6 @@ export const FirebaseContextProvider = ({ children }) => {
           console.log(result)
           console.log(result.user)
   
-  
           // Get the values that we want from the response
           const name = result._tokenResponse.firstName;
           const email = result.user.email;
@@ -50,7 +51,7 @@ export const FirebaseContextProvider = ({ children }) => {
           localStorage.setItem("name", name)
           localStorage.setItem("email", email)
           localStorage.setItem("profilePic", profilePic)
-  
+
           // Send the user to the dashboard
           redirect("/Dashboard")
         })
@@ -66,18 +67,19 @@ export const FirebaseContextProvider = ({ children }) => {
     } 
 
     useEffect(() => {
-        const listen = onAuthStateChanged(auth, (user) => {
-            if (user) {
-                setAuthUser(user)
-            } else {
-                setAuthUser(null)
-            }
-        });
-
-        return () => {
-            listen();
+      const listen = onAuthStateChanged(auth, (user) => {
+        if (user) {
+          setAuthUser(user);
+        } else {
+          setAuthUser(null);
         }
+        setIsLoading(false); // Set isLoading to false once the listener has finished executing
+      });
+      return () => {
+        listen();
+      };
     }, []);
+    
 
     useEffect(() => {
       const unsubscribe = onSnapshot(invoicesCollectionRef, (snapshot) => {
@@ -86,7 +88,7 @@ export const FirebaseContextProvider = ({ children }) => {
       });
       return unsubscribe; // This function will be called when the component unmounts to stop listening to the snapshot
     }, []);
-      
+
     useEffect(() => {
       const unsubscribe = onSnapshot(clientsCollectionRef, (snapshot) => {
         const updatedClients = snapshot.docs.map((doc) => ({...doc.data(),id: doc.id,}));
@@ -94,7 +96,7 @@ export const FirebaseContextProvider = ({ children }) => {
       });
       return unsubscribe; 
     }, []);
-  
+
     useEffect(() => {
       const unsubscribe = onSnapshot(teamCollectionRef, (snapshot) => {
         const updatedTeam = snapshot.docs.map((doc) => ({...doc.data(),id: doc.id,}));
@@ -112,26 +114,32 @@ export const FirebaseContextProvider = ({ children }) => {
     }, []);
 
     return (
-        <FirebaseContext.Provider 
-            value={{ 
-                authUser,
-                setAuthUser,
-                signIn,
-                signInWithGoogle,
-                logOut,
-                email,
-                setEmail,
-                password,
-                setPassword,
-                invoices,
-                clients,
-                team,
-                profilePic,
-            }}
-        >
-            {children}
-        </FirebaseContext.Provider>
-    )
+      <FirebaseContext.Provider 
+        value={{ 
+          authUser,
+          isLoading,
+          setEmail,
+          setPassword,
+          signIn,
+          signInWithGoogle,
+          logOut,
+          invoices,
+          clients,
+          team,
+          profilePic,
+        }}
+      >
+          {isLoading ? (
+            <div className="flex justify-center items-center h-screen">
+              <div className='text-4xl'>Loading...</div>
+            </div>
+          ) : (
+            <React.Fragment>
+              {children}
+            </React.Fragment>
+          )}
+      </FirebaseContext.Provider>
+    )    
 }
 
 export const useFirebaseContext = () => useContext(FirebaseContext)

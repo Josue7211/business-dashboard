@@ -1,7 +1,7 @@
 import React from 'react'
 import { GridComponent, ColumnsDirective, ColumnDirective, Page, Inject, Toolbar, Sort, Filter, Search } from '@syncfusion/ej2-react-grids'
 
-import { customersGrid } from '../data/dummy'
+import { customersGrid } from '../data/data'
 import { Header } from '../components'
 import { useFirebaseContext } from '../contexts/FirebaseContextProvider'
 

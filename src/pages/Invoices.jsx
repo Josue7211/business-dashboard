@@ -1,7 +1,7 @@
 import React from 'react'
 import { GridComponent, ColumnsDirective, ColumnDirective, Resize, Sort, ContextMenu, Filter, Page, ExcelExport, PdfExport, Edit, Inject  } from '@syncfusion/ej2-react-grids'
 
-import { ordersGrid } from '../data/dummy'
+import { ordersGrid } from '../data/data'
 import { Header } from '../components'
 import { useFirebaseContext } from '../contexts/FirebaseContextProvider'
 

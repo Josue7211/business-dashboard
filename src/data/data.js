@@ -12,16 +12,6 @@ import { GiLouvrePyramid } from 'react-icons/gi';
 import { GrLocation } from 'react-icons/gr';
 import avatar from './default.png';
 
-export const gridOrderImage = (props) => (
-  <div>
-    <img
-      className="rounded-xl h-20 md:ml-3"
-      src={props.ProductImage}
-      alt="order-item"
-    />
-  </div>
-);
-
 export const gridOrderStatus = (props) => (
   <button
     type="button"
@@ -50,7 +40,7 @@ export const kanbanGrid = [
     keyField: 'Close',
     allowToggle: true },
 ];
-const gridEmployeeProfile = (props) => (
+const gridTeamProfile = (props) => (
   <div className="flex items-center gap-2">
     <img
       className="rounded-full w-10 h-10"
@@ -60,12 +50,13 @@ const gridEmployeeProfile = (props) => (
   </div>
 );
 
-const gridEmployeeCountry = (props) => (
+const gridTeamCountry = (props) => (
   <div className="flex items-center justify-center gap-2">
     <GrLocation />
     <span>{props.country}</span>
   </div>
 );
+
 export const EditorData = () => (
   <div>
     <h3>
@@ -108,17 +99,14 @@ export const EditorData = () => (
     </h3>
   </div>
 );
-const customerGridImage = (props) => (
-  <div className="image flex gap-4">
+
+const gridClientProfile = (props) => (
+  <div className="flex items-center gap-2">
     <img
       className="rounded-full w-10 h-10"
-      src={props.CustomerImage}
-      alt="employee"
+      src={avatar}
     />
-    <div>
-      <p>{props.CustomerName}</p>
-      <p>{props.CustomerEmail}</p>
-    </div>
+    <p>{props.firstName} {props.lastName}</p>
   </div>
 );
 
@@ -128,6 +116,7 @@ const customerGridStatus = (props) => (
     <p>{props.Status}</p>
   </div>
 );
+
 export const areaPrimaryXAxis = {
   valueType: 'DateTime',
   labelFormat: 'y',
@@ -381,44 +370,42 @@ export const LinePrimaryYAxis = {
 
 export const customersGrid = [
   { 
-    field: 'firstName',
-    headerText: 'First Name',
+    headerText: 'Name',
     width: '100',
-    // template: customerGridImage,
-    textAlign: 'Center' },
-  { 
-    field: 'lastName',
-    headerText: 'Last Name',
-    width: '100',
-    textAlign: 'Left' },
+    template: gridClientProfile,
+    textAlign: 'Center'
+  },
   { field: 'phone',
     headerText: 'Phone Number',
-    width: '150',
-    textAlign: 'Center' },
+    width: '100',
+    textAlign: 'Center'
+  },
   { field: 'email',
     headerText: 'Email',
-    width: '130',
-    textAlign: 'Center', },
+    width: '100',
+    textAlign: 'Center',
+  },
   {
     field: 'streetAddress',
     headerText: 'Address',
     width: '100',
     format: 'C2',
-    textAlign: 'Center' },
+    textAlign: 'Center' 
+  },
   { field: 'city',
     headerText: 'City',
     width: '100',
     format: 'yMd',
-    textAlign: 'Center' },
-
+    textAlign: 'Center' 
+  },
   { field: 'zipCode',
     headerText: 'Zip Code',
     width: '100',
-    textAlign: 'Center' },
-
+    textAlign: 'Center' 
+  },
   { field: 'id',
     headerText: 'Client ID',
-    width: '120',
+    width: '100',
     textAlign: 'Center',
     isPrimaryKey: true,
   },
@@ -428,7 +415,7 @@ export const customersGrid = [
 export const employeesGrid = [
   { headerText: 'Employee',
     width: '150',
-    template: gridEmployeeProfile,
+    template: gridTeamProfile,
     textAlign: 'Center',
   },
   { field: 'name',
@@ -444,7 +431,7 @@ export const employeesGrid = [
   { headerText: 'Country',
     width: '120',
     textAlign: 'Center',
-    template: gridEmployeeCountry
+    template: gridTeamCountry
   },
   { field: 'HireDate',
     headerText: 'Hire Date',
