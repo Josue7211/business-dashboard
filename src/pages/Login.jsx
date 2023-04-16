@@ -1,11 +1,13 @@
 import React from "react";
 import { useFirebaseContext } from "../contexts/FirebaseContextProvider";
+import { useStateContext } from "../contexts/ContextProvider";
 
 const Login = () => {
+  const { currentColor } = useStateContext();
   const { email, setEmail, password, setPassword, signIn, signInWithGoogle } = useFirebaseContext();
 
   return (
-    <div className="flex w-full h-screen bg-light-gray">
+    <div className="flex w-full h-screen bg-main-bg">
       <div className="w-full flex items-center justify-center">
         <div className=" w-11/12 max-w-[700px] px-10 py-20 rounded-3xl bg-white border-2 border-gray-100">
           <h1 className="text-5xl font-semibold text-zinc-900">Welcome Back</h1>
@@ -44,14 +46,15 @@ const Login = () => {
                   Remember for 30 days
                 </label>
               </div>
-              <button className="font-medium text-base text-violet-500">
+              <button className="font-medium text-base text-zinc-900" >
                 Forgot password
               </button>
             </div>
             <div className="mt-8 flex flex-col gap-y-4">
               <button
                 onClick={signIn}
-                className="active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01]  ease-in-out transform py-4 bg-violet-500 rounded-xl text-white font-bold text-lg"
+                className="active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01]  ease-in-out transform py-4 rounded-xl text-white font-bold text-lg"
+                style={{ backgroundColor: currentColor }}
               >
                 Sign in
               </button>
