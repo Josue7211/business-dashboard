@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react'
 import { auth, db } from '../Firebase';
-import { redirect } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 import { collection, onSnapshot} from "firebase/firestore";
 import { signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
 
@@ -15,7 +15,6 @@ export const FirebaseContextProvider = ({ children }) => {
     const [clients, setClients] = useState([])
     const [profilePic, setProfilePic] = useState('')
     const [isLoading, setIsLoading] = useState(true);
-
 
     const invoicesCollectionRef = collection(db, "invoices");
     const clientsCollectionRef = collection(db, "clients");
@@ -80,7 +79,6 @@ export const FirebaseContextProvider = ({ children }) => {
       };
     }, []);
     
-
     useEffect(() => {
       const unsubscribe = onSnapshot(invoicesCollectionRef, (snapshot) => {
         const updatedInvoices = snapshot.docs.map((doc) => ({...doc.data(), id: doc.id}));

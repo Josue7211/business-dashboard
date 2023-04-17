@@ -4,6 +4,7 @@ export { default as Invoices } from './Invoices';
 export { default as Team } from './Team';
 export { default as Editor } from './Editor';
 export { default as Clients } from './Clients';
+export { default as ClientDetails } from './ClientDetails';
 export { default as ColorPicker } from './ColorPicker';
 export { default as Calendar } from './Calendar';
 export { default as Area } from './Charts/Area';

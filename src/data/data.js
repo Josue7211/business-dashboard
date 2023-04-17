@@ -368,7 +368,7 @@ export const LinePrimaryYAxis = {
   minorTickLines: { width: 0 },
 };
 
-export const customersGrid = [
+export const clientsGrid = [
   { 
     headerText: 'Name',
     width: '100',

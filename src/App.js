@@ -6,7 +6,7 @@ import { useFirebaseContext } from './contexts/FirebaseContextProvider';
 import { FiSettings } from 'react-icons/fi'
 import { TooltipComponent } from '@syncfusion/ej2-react-popups'
 import { Navbar, Sidebar, ThemeSettings } from './components'
-import { Dashboard, Invoices, Calendar, Team, Stacked, Pyramid, Clients, Kanban, Area, Bar, Pie, Financial, ColorPicker, ColorMapping, Editor, Line, Login  } from './pages'
+import { Dashboard, Invoices, Calendar, Team, Stacked, Pyramid, Clients, Kanban, Area, Bar, Pie, Financial, ColorPicker, ColorMapping, Editor, Line, Login, ClientDetails  } from './pages'
 import './App.css'
 
 const App = () => {
@@ -39,13 +39,11 @@ const App = () => {
                 {authUser && <Sidebar />}
               </div>
             )}
-            <div className={
-              `dark:bg-main-dark-bg bg-main-bg min-h-screen w-full ${activeMenu && authUser ? 'md:ml-72' : 'flex-2 '}`
-            }>
+
+            <div className={`dark:bg-main-dark-bg bg-main-bg min-h-screen w-full ${activeMenu && authUser ? 'md:ml-72' : 'flex-2 '}`}>
               <div className='fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full'>
                 {authUser && <Navbar />}
               </div>
-
             <div>
               {themeSettings && <ThemeSettings />}
                 <Routes>
@@ -58,6 +56,7 @@ const App = () => {
                     <Route path='/invoices' element={<Invoices />} />
                     <Route path='/team' element={<Team />} />
                     <Route path='/clients' element={<Clients />} />
+                    <Route path="/clients/:id" element={<ClientDetails />} />
 
                     {/* Apps */}
                     <Route path='/kanban' element={<Kanban />} />
