@@ -1,5 +1,5 @@
 import React from 'react'
-import { GridComponent, ColumnsDirective, ColumnDirective, Page, Inject, Toolbar, Sort, Filter, Search, Selection } from '@syncfusion/ej2-react-grids'
+import { GridComponent, ColumnsDirective, ColumnDirective, Page, Inject, Toolbar, Sort, Filter, Search } from '@syncfusion/ej2-react-grids'
 import { clientsGrid } from '../data/data'
 import { useNavigate } from 'react-router-dom'
 import { Header } from '../components'
@@ -24,7 +24,7 @@ const Clients = () => {
           <ColumnDirective  key={index} {...item} />
         ))}
         </ColumnsDirective>
-        <Inject services={[ Page, Toolbar, Search, Sort, Filter, Selection ]}/>
+        <Inject services={[ Page, Toolbar, Search, Sort, Filter ]}/>
       </GridComponent>
     </div>
   )

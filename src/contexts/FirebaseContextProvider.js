@@ -129,7 +129,7 @@ export const FirebaseContextProvider = ({ children }) => {
       >
           {isLoading ? (
             <div className="flex justify-center items-center h-screen">
-              <div className='text-4xl'>Loading...</div>
+              <div className='text-4xl'>Loading</div>
             </div>
           ) : (
             <React.Fragment>

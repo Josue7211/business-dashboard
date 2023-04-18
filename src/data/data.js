@@ -375,12 +375,14 @@ export const clientsGrid = [
     template: gridClientProfile,
     textAlign: 'Center'
   },
-  { field: 'phone',
+  { 
+    field: 'phone',
     headerText: 'Phone Number',
     width: '100',
     textAlign: 'Center'
   },
-  { field: 'email',
+  { 
+    field: 'email',
     headerText: 'Email',
     width: '100',
     textAlign: 'Center',
@@ -392,7 +394,8 @@ export const clientsGrid = [
     format: 'C2',
     textAlign: 'Center' 
   },
-  { field: 'city',
+  {
+    field: 'city',
     headerText: 'City',
     width: '100',
     format: 'yMd',
@@ -403,13 +406,13 @@ export const clientsGrid = [
     width: '100',
     textAlign: 'Center' 
   },
-  { field: 'id',
+  { 
+    field: 'id',
     headerText: 'Client ID',
     width: '100',
     textAlign: 'Center',
     isPrimaryKey: true,
   },
-
 ];
 
 export const employeesGrid = [
