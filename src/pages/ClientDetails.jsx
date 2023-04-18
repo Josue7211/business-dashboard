@@ -29,8 +29,8 @@ const ClientDetails = () => {
     <div className='m-2 md:m-10 p-6 md:p-10 bg-white rounded-3xl'>
       <Header category='Page' title ='Client Details'/>
         <div className='justify-center rounded-xl m-8 border-gray border'>
-          <div>
-            <table>
+          <div className='overflow-x-auto'>
+            <table className='table-auto w-full'>
               <thead className='border-b-1'>
                 <tr>
                   <th className='p-4 text-2xl font-bold text-left'>Personal</th>
@@ -38,32 +38,128 @@ const ClientDetails = () => {
               </thead>
               <tbody>
                 <tr className='border-b-1'>
-                  <td className='p-3 w-[600px]'>First Name</td>
-                  <td className='p-3 w-[600px]'>{clientDetails.firstName ? clientDetails.firstName :  <span className="text-red-500">NO DATA</span>}</td> 
+                  <td className='p-3 w-1/3'>First Name</td>
+                  <td className='p-3'>{clientDetails.firstName ? clientDetails.firstName :  <span className="text-red-500">NO DATA</span>}</td> 
                 </tr>
                 <tr className='border-b-1'>
-                  <td className='p-3 w-[600px]'>Last Name</td>
-                  <td className='p-3 w-[600px]'>{clientDetails.lastName ? clientDetails.lastName: <span className="text-red-500">NO DATA</span>}</td> 
+                  <td className='p-3'>Last Name</td>
+                  <td className='p-3'>{clientDetails.lastName ? clientDetails.lastName: <span className="text-red-500">NO DATA</span>}</td> 
                 </tr>
                 <tr className='border-b-1'>
-                  <td className='p-3 w-[600px]'>Email</td>
-                  <td className='p-3 w-[600px]'>{clientDetails.email ? clientDetails.email: <span className="text-red-500">NO DATA</span>}</td> 
+                  <td className='p-3'>Date of Birth</td>
+                  <td className='p-3'>{clientDetails.dateOfBirth ? clientDetails.dateOfBirth: <span className="text-red-500">NO DATA</span>}</td> 
                 </tr>
                 <tr className='border-b-1'>
-                  <td className='p-3 w-[600px]'>Phone Number</td>
-                  <td className='p-3 w-[600px]'>{clientDetails.phone ? clientDetails.phone: <span className="text-red-500">NO DATA</span>}</td> 
+                  <td className='p-3'>Religion</td>
+                  <td className='p-3'>{clientDetails.religion ? clientDetails.religion: <span className="text-red-500">NO DATA</span>}</td> 
                 </tr>
                 <tr className='border-b-1'>
-                  <td className='p-3 mr-4 w-[600px]'>Address</td>
-                  <td className='p-3 w-[600px]'>{clientDetails.streetAddress ? clientDetails.streetAddress: <span className="text-red-500">NO DATA</span>}</td> 
+                  <td className='p-3'>Civil Status</td>
+                  <td className='p-3'>{clientDetails.civilStatus ? clientDetails.civilStatus: <span className="text-red-500">NO DATA</span>}</td> 
                 </tr>
                 <tr className='border-b-1'>
-                  <td className='p-3 w-[600px]'>City</td>
-                  <td className='p-3 w-[600px]'>{clientDetails.city ? clientDetails.city: <span className="text-red-500">NO DATA</span>}</td> 
+                  <td className='p-3'>Weight</td>
+                  <td className='p-3'>{clientDetails.weight ? clientDetails.weight: <span className="text-red-500">NO DATA</span>}</td> 
+                </tr>
+                <tr className='border-b-1'>
+                  <td className='p-3'>Height</td>
+                  <td className='p-3'>{clientDetails.height ? clientDetails.height: <span className="text-red-500">NO DATA</span>}</td> 
+                </tr>
+                <tr className='border-b-1'>
+                  <td className='p-3'>Eye Color</td>
+                  <td className='p-3'>{clientDetails.eyeColor ? clientDetails.eyeColor: <span className="text-red-500">NO DATA</span>}</td> 
                 </tr>
                 <tr>
-                  <td className='p-3 w-[600px]'>Zipcode</td>
-                  <td className='p-3 w-[600px]'>{clientDetails.zipCode ? clientDetails.zipCode: <span className="text-red-500">NO DATA</span>}</td> 
+                  <td className='p-3'>Hair Color</td>
+                  <td className='p-3'>{clientDetails.hairColor ? clientDetails.hairColor: <span className="text-red-500">NO DATA</span>}</td> 
+                </tr>
+              </tbody>
+            </table>
+          </div>
+      </div>
+
+      <div className='justify-center rounded-xl m-8 border-gray border'>
+          <div className='overflow-x-auto'>
+            <table className='table-auto w-full'>
+              <thead className='border-b-1'>
+                <tr>
+                  <th className='p-4 text-2xl font-bold text-left'>Contact</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className='border-b-1'>
+                  <td className='p-3 w-1/3'>Email</td>
+                  <td className='p-3'>{clientDetails.email ? clientDetails.email: <span className="text-red-500">NO DATA</span>}</td> 
+                </tr>
+                <tr className='border-b-1'>
+                  <td className='p-3'>Phone Number</td>
+                  <td className='p-3'>{clientDetails.phone ? clientDetails.phone: <span className="text-red-500">NO DATA</span>}</td> 
+                </tr>
+                <tr className='border-b-1'>
+                  <td className='p-3'>Address</td>
+                  <td className='p-3'>{clientDetails.streetAddress ? clientDetails.streetAddress: <span className="text-red-500">NO DATA</span>}</td> 
+                </tr>
+                <tr className='border-b-1'>
+                  <td className='p-3'>City</td>
+                  <td className='p-3'>{clientDetails.city ? clientDetails.city: <span className="text-red-500">NO DATA</span>}</td> 
+                </tr>
+                <tr className='border-b-1'>
+                  <td className='p-3'>Zipcode</td>
+                  <td className='p-3'>{clientDetails.zipCode ? clientDetails.zipCode: <span className="text-red-500">NO DATA</span>}</td> 
+                </tr>
+                <tr className='border-b-1'>
+                  <td className='p-3'>State/Region</td>
+                  <td className='p-3'>{clientDetails.state ? clientDetails.state: <span className="text-red-500">NO DATA</span>}</td> 
+                </tr>
+                <tr>
+                  <td className='p-3'>Country</td>
+                  <td className='p-3'>{clientDetails.country ? clientDetails.country: <span className="text-red-500">NO DATA</span>}</td> 
+                </tr>
+              </tbody>
+            </table>
+          </div>
+      </div>
+
+      <div className='justify-center rounded-xl m-8 border-gray border'>
+          <div className='overflow-x-auto'>
+            <table className='table-auto w-full'>
+              <thead className='border-b-1'>
+                <tr>
+                  <th className='p-4 text-2xl font-bold text-left'>Immigration</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className='border-b-1'>
+                  <td className='p-3 w-1/3'>Alien Number</td>
+                  <td className='p-3'>{clientDetails.alienNumber ? clientDetails.alienNumber: <span className="text-red-500">NO DATA</span>}</td> 
+                </tr>
+                <tr className='border-b-1'>
+                  <td className='p-3'>Visa Number</td>
+                  <td className='p-3'>{clientDetails.visaNumber ? clientDetails.visaNumber: <span className="text-red-500">NO DATA</span>}</td> 
+                </tr>
+                <tr className='border-b-1'>
+                  <td className='p-3'>I-94</td>
+                  <td className='p-3'>{clientDetails.i94Number ? clientDetails.i94Number: <span className="text-red-500">NO DATA</span>}</td> 
+                </tr>
+                <tr className='border-b-1'>
+                  <td className='p-3'>Date of Arrival</td>
+                  <td className='p-3'>{clientDetails.dateOfArrival ? clientDetails.dateOfArrival: <span className="text-red-500">NO DATA</span>}</td> 
+                </tr>
+                <tr className='border-b-1'>
+                  <td className='p-3'>Immigration Status</td>
+                  <td className='p-3'>{clientDetails.currentImmigrationStatus ? clientDetails.currentImmigrationStatus: <span className="text-red-500">NO DATA</span>}</td> 
+                </tr>
+                <tr className='border-b-1'>
+                  <td className='p-3'>Status on Arrival</td>
+                  <td className='p-3'>{clientDetails.immigrationStatusOnArrival ? clientDetails.immigrationStatusOnArrival: <span className="text-red-500">NO DATA</span>}</td> 
+                </tr>
+                <tr className='border-b-1'>
+                  <td className='p-3'>USCIS Login</td>
+                  <td className='p-3'>{clientDetails.uscisLogin ? clientDetails.uscisLogin: <span className="text-red-500">NO DATA</span>}</td> 
+                </tr>
+                <tr>
+                  <td className='p-3'>USCIS Password</td>
+                  <td className='p-3'>{clientDetails.uscisPass ? clientDetails.uscisPass: <span className="text-red-500">NO DATA</span>}</td> 
                 </tr>
               </tbody>
             </table>
