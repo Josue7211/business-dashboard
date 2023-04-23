@@ -13,11 +13,14 @@ export const FirebaseContextProvider = ({ children }) => {
     const [invoices, setInvoices] = useState([])
     const [team, setTeam] = useState([])
     const [clients, setClients] = useState([])
+    const [cases, setCases] = useState([])
     const [profilePic, setProfilePic] = useState('')
     const [isLoading, setIsLoading] = useState(true);
 
+
     const invoicesCollectionRef = collection(db, "invoices");
     const clientsCollectionRef = collection(db, "clients");
+    const casesCollectionRef = collection(db, "cases");
     const teamCollectionRef = collection(db, "team");
 
     // Google authentication provider
@@ -96,6 +99,14 @@ export const FirebaseContextProvider = ({ children }) => {
     }, []);
 
     useEffect(() => {
+      const unsubscribe = onSnapshot(casesCollectionRef, (snapshot) => {
+        const updatedCases= snapshot.docs.map((doc) => ({...doc.data(),id: doc.id,}));
+        setCases(updatedCases);
+      });
+      return unsubscribe; 
+    }, []);
+
+    useEffect(() => {
       const unsubscribe = onSnapshot(teamCollectionRef, (snapshot) => {
         const updatedTeam = snapshot.docs.map((doc) => ({...doc.data(),id: doc.id,}));
         setTeam(updatedTeam);
@@ -123,6 +134,7 @@ export const FirebaseContextProvider = ({ children }) => {
           logOut,
           invoices,
           clients,
+          cases,
           team,
           profilePic,
         }}

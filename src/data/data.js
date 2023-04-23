@@ -1,7 +1,7 @@
 import React from 'react';
-import { AiOutlineCalendar, AiOutlineShoppingCart, AiOutlineAreaChart, AiOutlineBarChart, AiOutlineStock } from 'react-icons/ai';
+import { AiOutlineCalendar, AiOutlineShoppingCart, AiOutlineAreaChart, AiOutlineBarChart, AiOutlineStock, AiOutlineFolder } from 'react-icons/ai';
 import { FiShoppingBag, FiEdit, FiPieChart, FiBarChart, FiCreditCard, FiStar, FiShoppingCart } from 'react-icons/fi';
-import { BsKanban, BsBarChart, BsBoxSeam, BsCurrencyDollar, BsShield, BsChatLeft, BsListTask} from 'react-icons/bs';
+import { BsKanban, BsBarChart, BsBoxSeam, BsCurrencyDollar, BsShield, BsChatLeft, BsListTask } from 'react-icons/bs';
 import { BiColorFill, BiUser } from 'react-icons/bi';
 import { IoMdContacts } from 'react-icons/io';
 import { RiContactsLine, RiStockLine } from 'react-icons/ri';
@@ -415,6 +415,74 @@ export const clientsGrid = [
   },
 ];
 
+export const casesGrid = [
+  { 
+    field: 'caseType',
+    headerText: 'Case Type',
+    width: '100',
+    textAlign: 'Center'
+  },
+  { 
+    field: 'primaryFiler',
+    headerText: 'Primary Filer',
+    width: '100',
+    textAlign: 'Center'
+  },
+  { 
+    field: 'dateFiled',
+    headerText: 'Date Filed',
+    width: '100',
+    textAlign: 'Center'
+  },
+  { 
+    field: 'caseFormCode',
+    headerText: 'Form Code',
+    width: '100',
+    textAlign: 'Center'
+  },
+  { 
+    field: 'id',
+    headerText: 'Case ID',
+    width: '100',
+    textAlign: 'Center',
+    isPrimaryKey: true,
+  },
+];
+
+export const caseGrid = [
+  { 
+    field: 'caseType',
+    headerText: 'Case Type',
+    width: '100',
+    textAlign: 'Center'
+  },
+  { 
+    field: 'primaryFiler',
+    headerText: 'Primary Filer',
+    width: '100',
+    textAlign: 'Center'
+  },
+  { 
+    field: 'dateFiled',
+    headerText: 'Date Filed',
+    width: '100',
+    textAlign: 'Center'
+  },
+  { 
+    field: 'caseFormCode',
+    headerText: 'Form Code',
+    width: '100',
+    textAlign: 'Center'
+  },
+  { 
+    field: 'id',
+    headerText: 'Case ID',
+    width: '100',
+    textAlign: 'Center',
+    isPrimaryKey: true,
+  },
+];
+
 export const employeesGrid = [
   { headerText: 'Employee',
     width: '150',
@@ -436,18 +504,17 @@ export const employeesGrid = [
     textAlign: 'Center',
     template: gridTeamCountry
   },
-  { field: 'HireDate',
-    headerText: 'Hire Date',
+  { field: 'email',
+    headerText: 'Email',
     width: '135',
-    format: 'yMd',
     textAlign: 'Center'
   },
-  { field: 'ReportsTo',
-    headerText: 'Reports To',
+  { field: 'phone',
+    headerText: 'Phone Number',
     width: '120',
     textAlign: 'Center'
   },
-  { field: 'EmployeeID',
+  { field: 'id',
     headerText: 'Employee ID',
     width: '125',
     textAlign: 'Center'
@@ -479,6 +546,10 @@ export const links = [
       {
         name: 'Clients',
         icon: <RiContactsLine />,
+      },
+      {
+        name: 'Cases',
+        icon: <AiOutlineFolder />,
       },
     ],
   },

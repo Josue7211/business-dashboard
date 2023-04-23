@@ -7,6 +7,8 @@ export { default as Clients } from './Clients';
 export { default as ClientDetails } from './ClientDetails';
 export { default as ColorPicker } from './ColorPicker';
 export { default as Calendar } from './Calendar';
+export { default as Cases } from './Cases';
+export { default as CaseDetails } from './CaseDetails';
 export { default as Area } from './Charts/Area';
 export { default as Bar } from './Charts/Bar';
 export { default as ColorMapping } from './Charts/ColorMapping';
