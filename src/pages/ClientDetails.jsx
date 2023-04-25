@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import { doc, onSnapshot } from "firebase/firestore";
 import { Header } from '../components'
 import { db } from '../Firebase'
-import { useFirebaseContext } from '../contexts/FirebaseContextProvider';
 
 const ClientDetails = () => {
   const { clientId } = useParams(); // Rename the id parameter to clientId
@@ -28,6 +27,19 @@ const ClientDetails = () => {
   return (
     <div className='m-2 md:m-10 p-6 md:p-10 bg-white rounded-3xl'>
       <Header category='Page' title ='Client Details'/>
+          <nav className="flex border-b border-gray text-sm font-medium m-8">
+            <a href="" className="-mb-px border-b border-current p-4 text-cyan-500">
+              Details
+            </a>
+
+            <a href="" className="-mb-px border-b border-transparent p-4 hover:text-cyan-500">
+              Invoices
+            </a>
+
+            <a href="" className="-mb-px border-b border-transparent p-4 hover:text-cyan-500">
+              Logs
+            </a>
+          </nav>
         <div className='justify-center rounded-xl m-8 border-gray border'>
           <div className='overflow-x-auto'>
             <table className='table-auto w-full'>
@@ -164,8 +176,8 @@ const ClientDetails = () => {
               </tbody>
             </table>
           </div>
+        </div>
       </div>
-    </div>
   );
 }
 

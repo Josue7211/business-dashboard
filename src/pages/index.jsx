@@ -5,7 +5,6 @@ export { default as Team } from './Team';
 export { default as Editor } from './Editor';
 export { default as Clients } from './Clients';
 export { default as ClientDetails } from './ClientDetails';
-export { default as ColorPicker } from './ColorPicker';
 export { default as Calendar } from './Calendar';
 export { default as Cases } from './Cases';
 export { default as CaseDetails } from './CaseDetails';

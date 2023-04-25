@@ -18,7 +18,7 @@ const Clients = () => {
   return (
     <div className='m-2 md:m-10 p-2 md:p-10 bg-white rounded-3xl'>
       <Header category='Page' title ='Clients'/>
-      <GridComponent dataSource={clients} allowPaging allowSorting toolbar={['Search']} width='auto' rowSelected={handleRowClick} >
+      <GridComponent dataSource={clients} allowPaging allowSorting toolbar={['Search']} width='auto' rowHeight={47} rowSelected={handleRowClick} >
         <ColumnsDirective>
         {clientsGrid.map((item, index) => (
           <ColumnDirective  key={index} {...item} />

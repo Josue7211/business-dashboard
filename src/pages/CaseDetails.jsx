@@ -48,6 +48,10 @@ const CaseDetails = () => {
                   <td className='p-3'>Primary Filer</td>
                   <td className='p-3'>{caseDetails.primaryFiler ? caseDetails.primaryFiler: <span className="text-red-500">NO DATA</span>}</td> 
                 </tr>
+                <tr className='border-b-1'>
+                  <td className='p-3'>Status</td>
+                  <td className='p-3'>{<span className="text-red-500">Active</span>}</td> 
+                </tr>
               </tbody>
             </table>
           </div>

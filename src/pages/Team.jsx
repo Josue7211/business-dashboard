@@ -10,7 +10,7 @@ const Team = () => {
   return (
     <div className='m-2 md:m-10 p-2 md:p-10 bg-white rounded-3xl'>
       <Header category='Page' title ='Team'/>
-      <GridComponent dataSource={team} allowPaging allowSorting toolbar={['Search']} width='auto' >
+      <GridComponent dataSource={team} allowPaging allowSorting toolbar={['Search']} width='auto' rowHeight={47} >
         <ColumnsDirective>
         {employeesGrid.map((item, index) => (
           <ColumnDirective  key={index} {...item} />

@@ -1,8 +1,9 @@
 import React from 'react';
-import { AiOutlineCalendar, AiOutlineShoppingCart, AiOutlineAreaChart, AiOutlineBarChart, AiOutlineStock, AiOutlineFolder } from 'react-icons/ai';
+import { AiOutlineAreaChart, AiOutlineBarChart, AiOutlineStock } from 'react-icons/ai';
 import { FiShoppingBag, FiEdit, FiPieChart, FiBarChart, FiCreditCard, FiStar, FiShoppingCart } from 'react-icons/fi';
-import { BsKanban, BsBarChart, BsBoxSeam, BsCurrencyDollar, BsShield, BsChatLeft, BsListTask } from 'react-icons/bs';
-import { BiColorFill, BiUser } from 'react-icons/bi';
+import { BsKanban, BsBarChart, BsBoxSeam, BsCurrencyDollar, BsShield, BsChatLeft, BsListTask, BsCalendarDate, BsFolder } from 'react-icons/bs';
+import { BiUser } from 'react-icons/bi';
+import { TbFileInvoice } from 'react-icons/tb'
 import { IoMdContacts } from 'react-icons/io';
 import { RiContactsLine, RiStockLine } from 'react-icons/ri';
 import { MdOutlineSupervisorAccount } from 'react-icons/md';
@@ -537,7 +538,7 @@ export const links = [
     links: [
       {
         name: 'Invoices',
-        icon: <AiOutlineShoppingCart />,
+        icon: <TbFileInvoice />,
       },
       {
         name: 'Team',
@@ -549,7 +550,7 @@ export const links = [
       },
       {
         name: 'Cases',
-        icon: <AiOutlineFolder />,
+        icon: <BsFolder />,
       },
     ],
   },
@@ -558,19 +559,15 @@ export const links = [
     links: [
       {
         name: 'calendar',
-        icon: <AiOutlineCalendar />,
+        icon: <BsCalendarDate />,
       },
       {
-        name: 'kanban',
+        name: 'reminders',
         icon: <BsKanban />,
       },
       {
-        name: 'editor',
+        name: 'forms',
         icon: <FiEdit />,
-      },
-      {
-        name: 'color-picker',
-        icon: <BiColorFill />,
       },
     ],
   },

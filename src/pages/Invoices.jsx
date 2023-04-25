@@ -11,7 +11,7 @@ const Invoices = () => {
   return (
     <div className='m-2 md:m-10 p-2 md:p-10 bg-white rounded-3xl'>
       <Header category='Page' title ='Invoices'/>
-      <GridComponent id='gridComp' dataSource={invoices} allowPaging allowSorting >
+      <GridComponent id='gridComp' dataSource={invoices} allowPaging allowSorting width='auto' rowHeight={47}>
         <ColumnsDirective>
         {ordersGrid.map((item, index) => (
           <ColumnDirective  key={index} {...item} />
