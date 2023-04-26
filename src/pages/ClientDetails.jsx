@@ -31,11 +31,9 @@ const ClientDetails = () => {
             <a href="" className="-mb-px border-b border-current p-4 text-cyan-500">
               Details
             </a>
-
             <a href="" className="-mb-px border-b border-transparent p-4 hover:text-cyan-500">
               Invoices
             </a>
-
             <a href="" className="-mb-px border-b border-transparent p-4 hover:text-cyan-500">
               Logs
             </a>

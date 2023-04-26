@@ -111,12 +111,6 @@ const gridClientProfile = (props) => (
   </div>
 );
 
-const customerGridStatus = (props) => (
-  <div className="flex gap-2 justify-center items-center text-gray-700 capitalize">
-    <p style={{ background: props.StatusBg }} className="rounded-full h-3 w-3" />
-    <p>{props.Status}</p>
-  </div>
-);
 
 export const areaPrimaryXAxis = {
   valueType: 'DateTime',
@@ -562,7 +556,7 @@ export const links = [
         icon: <BsCalendarDate />,
       },
       {
-        name: 'reminders',
+        name: 'reminder',
         icon: <BsKanban />,
       },
       {
@@ -805,15 +799,9 @@ export const userProfileData = [
 
 export const ordersGrid = [
   {
-    field: 'id',
-    headerText: 'Invoice ID',
-    width: '80',
-    textAlign: 'Center',
-  },
-  {
     field: 'name',
     headerText: 'Name',
-    textAlign: 'Left',
+    textAlign: 'Center',
     width: '120',
   },
   { field: 'phone',
@@ -838,9 +826,15 @@ export const ordersGrid = [
   {
     headerText: 'Status',
     template: gridOrderStatus,
-    field: 'OrderItems',
+    field: 'status',
     textAlign: 'Center',
     width: '120',
+  },
+  {
+    field: 'id',
+    headerText: 'Invoice ID',
+    width: '80',
+    textAlign: 'Center',
   },
 ];
 

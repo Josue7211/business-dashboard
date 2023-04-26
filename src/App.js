@@ -6,7 +6,7 @@ import { useFirebaseContext } from './contexts/FirebaseContextProvider';
 import { FiSettings } from 'react-icons/fi'
 import { TooltipComponent } from '@syncfusion/ej2-react-popups'
 import { Navbar, Sidebar, ThemeSettings } from './components'
-import { Dashboard, Invoices, Calendar, Team, Stacked, Pyramid, Clients, Cases, Kanban, Area, Bar, Pie, Financial, ColorMapping, Editor, Line, Login, ClientDetails, CaseDetails } from './pages'
+import { Dashboard, Invoices, Calendar, Team, Stacked, Pyramid, Clients, Cases, Reminder, Area, Bar, Pie, Financial, ColorMapping, Editor, Line, Login, ClientDetails, CaseDetails } from './pages'
 import './App.css'
 
 const App = () => {
@@ -61,7 +61,7 @@ const App = () => {
                     <Route path="/cases/:caseId" element={<CaseDetails />} />
 
                     {/* Apps */}
-                    <Route path='/reminders' element={<Kanban />} />
+                    <Route path='/reminder' element={<Reminder />} />
                     <Route path='/forms' element={<Editor />} />
                     <Route path='/calendar' element={<Calendar />} />
 

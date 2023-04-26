@@ -1,5 +1,5 @@
 export { default as Dashboard } from './Dashboard';
-export { default as Kanban } from './Kanban';
+export { default as Reminder } from './Reminder';
 export { default as Invoices } from './Invoices';
 export { default as Team } from './Team';
 export { default as Editor } from './Editor';

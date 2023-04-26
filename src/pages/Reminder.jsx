@@ -4,10 +4,10 @@ import { KanbanComponent, ColumnsDirective, ColumnDirective } from '@syncfusion/
 import { kanbanData, kanbanGrid } from '../data/data'
 import { Header } from '../components'
 
-const Kanban = () => {
+const Reminder = () => {
   return (
     <div className='m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl'>
-      <Header category='App' title='Reminders'/>
+      <Header category='App' title='Reminder'/>
       <KanbanComponent id='kanban' dataSource={kanbanData} cardSettings={{ contentField: 'Summary', headerField: 'Id'}} keyField='Status'>
         <ColumnsDirective>
           {kanbanGrid.map((item, index) => <ColumnDirective key={index} {...item} />)}
@@ -17,4 +17,4 @@ const Kanban = () => {
   )
 }
 
-export default Kanban
+export default Reminder
